@@ -1,0 +1,70 @@
+<div>
+    <form #bookform="ngForm"  (ngSubmit)="onsubmit(); bookform.valid">
+        <div>
+        <label>ISBN</label>
+        <input type="text" name="isbn" ngModel #isbn="ngModel" required>
+        </div>
+        <span id="sb" *ngIf="!isbn.valid  &&   isbn.touched" >Please enter the name</span>
+        <div>
+            <label>BookName</label>
+            <input type="text" name="bname" ngModel #bname="ngModel"  required>
+        </div>
+        <span id="sb" *ngIf="!bname.valid  &&   bname.touched" >Enter the book name</span>
+        <div>
+            <label>Author</label>
+            <input type="text" name="author" ngModel #author="ngModel" required>
+        </div>
+        <span id="sb" *ngIf="!author.valid  &&   author.touched" >Enter the author name</span>
+        <div>
+            <label>Publisher</label>
+            <input type="text" name="publisher" ngModel #publisher="ngModel"  required>
+        </div>
+        <span id="sb" *ngIf="!publisher.valid  &&   publisher.touched" >Enter the publisher </span>
+        <div>
+            <label>Quantity</label>
+            <input type="text" name="quantity" ngModel #quantity="ngModel" required patterns=>
+        </div>
+        <span id="sb" *ngIf="!quantity.valid  &&   quantity.touched" >Enter quantity</span>
+        <div class="button">
+            <button style="background-color:rgb(3, 137, 247)" [disabled]="!bookform.form.valid" (click)="addbooks(isbn.value,bname.value,author.value,publisher.value,quantity.value)">Submit</button>
+            </div>
+       
+    </form>
+</div>
+
+<div class="tablediv">  
+    <table class="table table-bordered table-hover bg-info">
+        <tr>
+            <th>Id</th>
+            <th>ISBN</th>
+            <th>Bookname</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Quality</th>
+            <th>Issuedbook</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+            <tr *ngFor='let task of booklist;let i=index'>
+                    <td>{{i+1}}</td>
+                    <td>{{task.isbn}}</td>
+                    <td>{{task.bookname}}</td>
+
+                    <td>{{task.author}}</td>
+                    <td>{{task.publisher}}</td>
+                    <td>{{task.quantity}}</td>
+                    <td>0</td>
+                    <td><button (click)="onedit(i,task.isbn,task.bookname,task.author,task.publisher,task.quantity)">EDIT</button>
+                        <button (click)="ondelete(i)">Delete</button>
+                      </td>
+                    
+                    
+                    
+                
+            </tr>
+           
+           </tbody>
+      
+    </table>
+</div>
+

@@ -1,0 +1,28 @@
+div{
+    margin:10px;
+}
+label{
+    width:90px;
+    display:inline-block
+}
+input{
+   
+    width:100%;
+    display:inline-block;
+}
+.button{
+    margin:30px 650px;
+    
+}
+.tablediv{
+    margin:20px 200px;
+    padding:30px;
+}
+#sb{
+    border:black solid 1px;
+    color:red;
+}
+span{
+    margin-left:15px;
+  
+}

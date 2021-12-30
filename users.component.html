@@ -1,0 +1,77 @@
+<div>
+    <form #userform="ngForm"  (ngSubmit)="onSubmit()" >
+    <div>
+        <label>Username</label>
+        <input type="text" placeholder="Username" name="uname" required ngModel #uname="ngModel">
+    </div>
+ 
+    <span id="sb" *ngIf="!uname.valid  &&  uname.touched" >Please enter the name</span>
+   
+     <div>
+        <label>Email</label>
+        <input type="text" placeholder="Email" name="uemail"  ngModel  #uemail="ngModel" required>
+    </div>
+    
+    <span id="sb" *ngIf="!uemail.valid  &&  uemail.touched" >Please enter the name</span>
+
+    <div>
+        
+        <label>Address</label>
+        <input type="text" placeholder="Address" name="uaddress"  ngModel #uaddress="ngModel" required>
+    </div>
+
+    <span id="sb" *ngIf="!uaddress.valid  &&  uaddress.touched" >Please enter the name</span>
+
+    <div>
+    <label>City</label>
+        <input type="text" placeholder="City" name="ucity" ngModel  #ucity="ngModel" required>
+    </div>
+
+    <span id="sb" *ngIf="!ucity.valid  &&  ucity.touched" >Please enter the name</span>
+
+    <div>
+        <label>Contactno</label>
+        <input type="text" placeholder="Contactno" name="ucontactno"  ngModel #ucontactno="ngModel" required>
+    </div>
+
+    <span id="sb" *ngIf="!ucontactno.valid  &&  ucontactno.touched" >Please enter the name</span>
+    <div class="button">
+        <button style="background-color:rgb(3, 137, 247)" [disabled]="!userform.form.valid" (click)="addusers(uname.value,uemail.value,uaddress.value,ucity.value,ucontactno.value);">Submit</button>
+        </div>
+
+ </form>
+</div>
+
+<div class="tablediv">  
+    <table class="table table-bordered table-hover bg-info">
+        <tr>
+            <th>Id</th>
+            <th>username</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Contactno</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+            <tr *ngFor='let task of userlist;let i=index'>
+                    <td>{{i+1}}</td>
+                    <td>{{task.username}}</td>
+                    <td>{{task.email}}</td>
+                    <td>{{task.address}}</td>
+                    <td>{{task.city}}</td>
+                    <td>{{task.contactno}}</td>
+                    <td><button (click)="onedit(i,task.username,task.email,task.address,task.city,task.contactno)">EDIT</button>
+                        <button (click)="ondelete(i)">Delete</button>
+                      </td>
+        
+                    
+                    
+                    
+                    
+                
+            </tr>
+           
+           </tbody>
+    </table>
+</div>
